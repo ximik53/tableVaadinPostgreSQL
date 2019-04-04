@@ -35,12 +35,10 @@ public class VaadinUI extends UI {
 
     private void updateGrid() {
         grid.setItems(service.findAll());
-        setFormVisible(true);
     }
 
     Binder<Company> binder = new Binder<>(Company.class);
     private void updateForm() {
-        setFormVisible(!grid.getSelectedItems().isEmpty());
         if (!grid.getSelectedItems().isEmpty()) {
             company = grid.asSingleSelect().getValue();
             binder.bindInstanceFields(this);
@@ -48,12 +46,6 @@ public class VaadinUI extends UI {
         }
     }
 
-    private void setFormVisible(boolean visible) {
-        name.setVisible(visible);
-        surname.setVisible(visible);
-        email.setVisible(visible);
-        save.setVisible(visible);
-    }
 
     private void saveCompany() {
         service.update(company);
