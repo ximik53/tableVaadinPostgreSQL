@@ -62,7 +62,7 @@ public class VaadinUI extends UI {
         newCompany.setSurname(surname.getValue());
         newCompany.setEmail(email.getValue());
 
-        service.addNew(newCompany);
+        service.save(newCompany);
 
         updateGrid();
     }
