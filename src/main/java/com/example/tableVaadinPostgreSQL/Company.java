@@ -1,27 +1,46 @@
 package com.example.tableVaadinPostgreSQL;
 
+import javax.persistence.*;
+
 public class Company {
+    private static final long serialVersionUID = 1L;
 
-    private Long id;
-    public Long getId() {
-        return id;
-    }
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Column
     private String name;
-    public String getName() {
-        return name;
-    }
+
+    @Column
     private String surname;
-    public String getSurname() {
-        return surname;
-    }
+
+    @Column
     private String email;
-    public String getEmail() {
-        return email;
+
+    public Company() {
     }
 
-    public void setId(Long id) {
+    public long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getSurame() {
+        return this.surname;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setId(long id) {
         this.id = id;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -31,5 +50,4 @@ public class Company {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

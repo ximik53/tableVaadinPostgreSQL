@@ -1,22 +1,37 @@
 package com.example.tableVaadinPostgreSQL;
 
-import org.apache.ibatis.annotations.*;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper
-public interface CompanyService {
+@Service
+public class CompanyService {
 
-    @Select("SELECT * FROM company ORDER BY id")
-    List<Company> findAll();
+    private final CompanyRepository companyRepository;
 
-    @Update("UPDATE company SET name = #{name}, surname = #{surname}, email = #{email} WHERE id = #{id}")
-    void update(Company company);
+    @java.beans.ConstructorProperties({"companyRepository"})
+    public CompanyService(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
+    }
 
-    @Delete("DELETE FROM company WHERE id = #{id}")
-    void delete(Company delCompany);
+    public List<Company> findAll() {
+        return companyRepository.findAll();
+    }
 
-    @Insert( "INSERT INTO company(name,surname,email) VALUES (#{name},#{surname},#{email})")
-    void insert(Company newCompany);
+    public void delete(Company company) {
+        companyRepository.delete(company);
+    }
 
+    public List<Company> findByNameLikeIgnoreCase(String name, PageRequest pageRequest) {
+        return companyRepository.findByNameLikeIgnoreCase(name, pageRequest);
+    }
+
+    public int countByNameLikeIgnoreCase(String name) {
+        return companyRepository.countByNameLikeIgnoreCase(name);
+    }
+
+    public Company save(Company company) {
+        return companyRepository.save(company);
+    }
 }

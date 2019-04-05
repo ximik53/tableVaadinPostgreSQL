@@ -22,12 +22,12 @@ public class VaadinUI extends UI {
     private TextField email = new TextField("Email");
     private Button save = new Button("Save", e -> saveCompany());
     private Button delete = new Button("Delete", e -> delete());
-    private Button insert = new Button("Insert", e-> insertCompany());
+    private Button addNew = new Button("Insert", e-> insertCompany());
     @Override
     protected void init(VaadinRequest request) {grid.setColumns("id","name","surname","email");
         updateGrid();
         grid.addSelectionListener(e -> updateForm());
-        HorizontalLayout layout = new HorizontalLayout(new VerticalLayout(grid, new HorizontalLayout(delete, insert)), new VerticalLayout(name, surname, email, save));
+        HorizontalLayout layout = new HorizontalLayout(new VerticalLayout(grid, new HorizontalLayout(delete, addNew)), new VerticalLayout(name, surname, email, save));
         layout.setMargin(true);
         layout.setSpacing(true);
         setContent(layout);
@@ -63,7 +63,7 @@ public class VaadinUI extends UI {
         newCompany.setSurname(surname.getValue());
         newCompany.setEmail(email.getValue());
 
-        service.insert(newCompany);
+        service.addNew(newCompany);
 
         updateGrid();
     }
