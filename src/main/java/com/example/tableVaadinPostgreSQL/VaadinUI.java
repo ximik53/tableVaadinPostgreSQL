@@ -46,9 +46,8 @@ public class VaadinUI extends UI {
         }
     }
 
-
     private void saveCompany() {
-        service.update(company);
+        service.save(company);
         updateGrid();
     }
 
