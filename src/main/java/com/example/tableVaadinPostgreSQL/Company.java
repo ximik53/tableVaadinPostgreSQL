@@ -2,7 +2,9 @@ package com.example.tableVaadinPostgreSQL;
 
 import javax.persistence.*;
 
+@Table
 @Entity
+
 public class Company {
     private static final long serialVersionUID = 1L;
 
