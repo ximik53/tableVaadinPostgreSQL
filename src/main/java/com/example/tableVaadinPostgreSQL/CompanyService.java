@@ -1,5 +1,6 @@
 package com.example.tableVaadinPostgreSQL;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ public class CompanyService {
 
     private final CompanyRepository companyRepository;
 
-    @java.beans.ConstructorProperties({"companyRepository"})
+    @Autowired
     public CompanyService(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
