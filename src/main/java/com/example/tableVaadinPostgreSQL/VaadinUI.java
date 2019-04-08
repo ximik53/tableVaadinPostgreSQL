@@ -20,9 +20,9 @@ public class VaadinUI extends UI {
     private TextField name = new TextField("Name");
     private TextField surname = new TextField("Surname");
     private TextField email = new TextField("Email");
-    private Button save = new Button("Save", e -> saveCompany());
-    private Button delete = new Button("Delete", e -> delete());
-    private Button addNew = new Button("Insert", e-> insertCompany());
+    private Button save = new Button("Save");
+    private Button delete = new Button("Delete");
+    private Button addNew = new Button("Insert");
     @Override
     protected void init(VaadinRequest request) {grid.setColumns("id","name","surname","email");
         updateGrid();
