@@ -6,15 +6,21 @@ import javax.persistence.*;
 @Entity
 
 public class Company {
+    private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue
     private long id;
 
+    @Column
     private String name;
 
+    @Column
     private String surname;
 
+    @Column
     private String email;
+
 
     public Company() {
     }
